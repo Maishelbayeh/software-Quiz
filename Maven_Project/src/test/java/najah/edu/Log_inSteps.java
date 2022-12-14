@@ -1,5 +1,6 @@
 package najah.edu;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -43,8 +44,12 @@ public void userFillTheLoginFormAndSumbit() {
 }
 @Then("user should navigate to next page")
 public void userShouldNavigateToNextPage() {
-//	boolean isWelcomeMessage=driver.findElement(By.cssSelector("[data-testid=\"welcome\"]")).isDisplayed();	
-	//.assertTrue(isWelcomeMessage)	;
+	driver.switchTo().frame("mainpanel");
+	
+String s=driver.findElement(By.xpath("/html/body/table[1]/tbody/tr[2]/td[1]/div/table/tbody/tr/td[1]")).getText();
+System.out.println(s);
+assertEquals(s, "CRMPRO");
+
 }
 
 

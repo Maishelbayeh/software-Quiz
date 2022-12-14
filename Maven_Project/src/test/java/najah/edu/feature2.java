@@ -21,17 +21,7 @@ import junit.framework.Assert;
 public class feature2 {
 	WebDriver driver;
 	
-	@When("user add new todo")
-	public void userAddNewTodo() {
-	  driver.findElement(By.cssSelector("[data-testid=\"add\"]")).click();
-		  
-	  
-	}
-	@Then("the added todo is correctly displayed")
-	public void theAddedTodoIsCorrectlyDisplayed() {
-		WebElement task=driver.findElement(By.cssSelector("[data-testid=\"todo-text\"]"));
-		assertEquals(task ,"quiz");
-	}
+	
 
 	@Given("user is in home")
 	public void user_is_in_home() {
@@ -49,27 +39,21 @@ public class feature2 {
 	
 	@When("submit team view")
 	public void submit_team_view() {
-		driver.findElement(By.xpath("//*[@id=\"navMenu\"]/ul/li[16]/a")).getAttribute("list-style: none;\r\n"
-				+ "			    font-family: verdana, sans-serif;\r\n"
-				+ "			    font-size: 11px;\r\n"
-				+ "			    font-weight: bold;\r\n"
-				+ "			    border: 1px solid #127CA8;\r\n"
-				+ "			    text-decoration: none;\r\n"
-				+ "			    margin: 2px;\r\n"
-				+ "			    color: black;\r\n"
-				+ "			    display: block;\r\n"
-				+ "			    padding: 3px 3px 3px 3px;");
 		
-		
+		driver.switchTo().frame("mainpanel");
+		driver.findElement(By.xpath("//*[@id=\"navMenu\"]/ul/li[17]/a")).click(); 
 		
 		 
 	}//*[@id="navMenu"]/ul/li[16]/a
 	
 	@Then("show all users")
 	public void show_all_users() {
-	    // Write code here that turns the phrase above into concrete actions
-	   // throw new io.cucumber.java.PendingException();
-	}
+		
+String s=driver.findElement(By.xpath("/html/body/table[2]/tbody/tr[1]/td[2]/table/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr/td[1]")).getText();
+System.out.println(s);
+	assertEquals(s, "Team for asall");
+		
 
 
+}
 }
